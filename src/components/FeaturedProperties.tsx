@@ -1,0 +1,75 @@
+import { Link } from "react-router-dom";
+import { PropertyCard } from "./PropertyCard";
+import luckyGardens from "@/assets/lucky-gardens.jpg?format=webp&w=600&q=85&imagetools";
+import kca1 from "@/assets/university.jpg?format=webp&w=600&q=85&imagetools";
+import fahariGardens from "@/assets/fahari-gardens.jpg?format=webp&w=600&q=85&imagetools";
+import kcaPhase3 from "@/assets/kcaPhase3.jpg?format=webp&w=600&q=85&imagetools";
+
+const properties = [
+  {
+    id: "4",
+    name: "5 Acre Blocks For Sale",
+    location: "Opposite Kca University Kitengela",
+    price: "Ksh 2,000,000",
+    image: kcaPhase3,
+    size: "5 Acres",
+    status: "Hot Deal",
+  },
+  {
+    id: "5",
+    name: "University View Estate",
+    location: "500 Meters to KCA University Kitengela",
+    price: "Ksh 650,000",
+    image: kca1,
+    size: "50*100",
+    status: "Available",
+  },
+  {
+    id: "9",
+    name: "Fahari Gardens Phase 2",
+    location: "Kampala University Kitengela",
+    price: "Ksh 1,100,000",
+    image: fahariGardens,
+    size: "50*100",
+    status: "Premium",
+  },
+];
+
+export const FeaturedProperties = () => {
+  return (
+    <section id="properties" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <span className="text-accent-red">Featured</span> Properties
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Discover prime land opportunities across Kenya with ready title deeds and excellent infrastructure
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {properties.map((property, index) => (
+            <div
+              key={property.id}
+              className="animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <PropertyCard {...property} />
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12 animate-fade-in">
+          <Link
+            to="/properties"
+            className="text-primary hover:text-primary-glow font-semibold inline-flex items-center gap-2 transition-colors"
+          >
+            View All Properties
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
